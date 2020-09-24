@@ -31,11 +31,7 @@ select e.BusinessEntityId
 
 -- all employees
 select e.BusinessEntityId
-     , case
-         when e.JobTitle like '%and%' then REPLACE(e.JobTitle, 'and', '&')
-         else e.JobTitle
-       end
-       as JobTitle
+     , replace(e.JobTitle, 'and', '&') as JobTitle
      , dep.Name as DepName
   from HumanResources.Employee as e
   join HumanResources.EmployeeDepartmentHistory as edh
